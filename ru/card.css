@@ -1,0 +1,99 @@
+:root {
+  --p-color: #ff8f00;
+  --s-color: #546e7a;
+  --p-light: #ffc046;
+  --s-light: #819ca9;
+  --p-dark: #c56000;
+  --s-dark: #29434e;
+  --text-on-p: #000000;
+  --text-on-s: #ffffff;
+  --text-body: #212121;
+  --body-color: white;
+}
+
+.chapT {
+	color: var(--s-color);
+	font-size: 34px;
+	font-weight: 400px;
+	line-height: 40px;
+	box-sizing: border-box;
+	-webkit-margin-before: 0.83em;
+	margin-bottom: 50px;
+}
+
+#body {
+	font-family: "RobotoDraft","Roboto",sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size: 20px;
+	text-rendering: optimizeLegibility;
+	padding-top: 100px;
+	padding-left: 100px;
+	background-color: var(--body-color);
+	color: var(--text-body);
+	padding-bottom: 50px;
+}
+
+header {
+	z-index: 100;
+	width: 100%;
+	height: 32px;
+	padding: 16px;
+	background-color: var(--p-color);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+	filter: opacity(0.82);
+	color: var(--text-on-p);
+	float: left;
+	font-size: 18px;
+	vertical-align: center;
+	line-height: 64px;
+	font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+	font-family: "RobotoDraft","Roboto",sans-serif;
+	text-rendering: optimizeLegibility;
+	position: fixed;
+	display: block;
+	text-align: left;
+	z-index: 3;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* Material Icons */
+@font-face {
+				font-family: 'Material Icons';
+				font-style: normal;
+				font-weight: 400;
+				src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+				src: local('Material Icons'),
+					local('MaterialIcons-Regular'),
+					url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+					url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+					url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+			}
+			.material-icons {
+				font-family: 'Material Icons';
+				font-weight: normal;
+				font-style: normal;
+				font-size: 24px;  /* Preferred icon size */
+				display: inline-block;
+				line-height: 1;
+				text-transform: none;
+				letter-spacing: normal;
+				word-wrap: normal;
+				white-space: nowrap;
+				direction: ltr;
+
+				/* Support for all WebKit browsers. */
+				-webkit-font-smoothing: antialiased;
+				/* Support for Safari and Chrome. */
+				text-rendering: optimizeLegibility;
+
+				/* Support for Firefox. */
+				-moz-osx-font-smoothing: grayscale;
+
+				/* Support for IE. */
+				font-feature-settings: 'liga';
+			}
