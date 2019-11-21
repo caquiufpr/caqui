@@ -26,7 +26,8 @@ th:active {
 }
 
 th.selected1, th.selected2 {
-  background-color: var(--p-dark);
+  background-color: var(--s-color);
+  color: var(--text-on-s);
 }
 
 .chapT {

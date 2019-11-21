@@ -23,26 +23,31 @@
 		</header>
 		<div id="body" class="center">
 				<!--p class="chapT">Gerar Cardápio para o Instagram</p-->
-				<p>Imagem selecionada</p>
+				<p>Imagem Selecionada</p>
 				<table>
 					<tr>
 						<th id="b1" onclick="button(1)">Upload</th>
-						<th id="b2" onclick="button(2)" class="selected1">Padrão</th>
+						<th id="b2" onclick="button(2)">Padrão</th>
 						<th id="b3" onclick="button(3)">Link</th>
 					</tr>
 				</table>
+				<br/><img id="image" width="100px" height="100px"></img><br/>
 				<p>Data</p>
 				<table>
 					<tr>
 						<th id="b4" onclick="button(4)">Hoje</th>
-						<th id="b5" onclick="button(5)"class="selected2">Amanhã</th>
+						<th id="b5" onclick="button(5)">Amanhã</th>
 						<th id="b6" onclick="button(6)">Outra</th>
 					</tr>
 				</table>
 				<p onload="getwebdata()">Texto do cardápio</p>
-				<textarea></textarea>
+				<textarea id="textarea"></textarea>
 				<br/><br/><br/>
 				<button onclick="generate()">Gerar Imagem</button>
+				<a id="download" download="cardapio.png"><button onclick="download()">Download</button></a>
+		</div>
+		<div id="output" class="center" style="margin-top:50%">
+			<canvas id="canvas" width="1080px" height="1920px">Your browser does not support canvas, sorry :(</canvas>
 		</div>
 	</body>
 </html>
