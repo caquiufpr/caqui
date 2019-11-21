@@ -113,5 +113,4 @@ function download() {
               .replace("image/png", "image/octet-stream");
   download.setAttribute("download", "Cardapio do dia "+getTheDate());
   download.setAttribute("href", image);
-
 }
