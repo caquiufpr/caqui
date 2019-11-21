@@ -1,4 +1,4 @@
-function getwebdata() {
+/**function getwebdata() {
 
 
 }
@@ -11,4 +11,30 @@ let scrape = async () => {
   // Scrape
   browser.close();
   return result;
+};**/
+
+
+function generate() {
+  
+};
+
+var b1 = 2;
+var b2 = 2;
+
+function button(number) {
+  if (number<4) {
+    var resetB = document.querySelectorAll('.selected1');
+  		resetB.forEach(function(thiscell) {
+  			thiscell.className = "";
+  		});
+    document.getElementById("b"+number).className = "selected1";
+    b1 = number;
+  } else if (number>3) {
+    var resetB = document.querySelectorAll('.selected2');
+  		resetB.forEach(function(thiscell) {
+  			thiscell.className = "";
+  		});
+    document.getElementById("b"+number).className = "selected2";
+    b2 = number;
+  };
 };
