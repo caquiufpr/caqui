@@ -35,6 +35,8 @@ function generate() {
   ctx.fillText("Hello World", canvas.width/2, canvas.height/2);
 
   ctx.drawImage(picture, 0, 0);
+
+  alert("Imagem gerada com sucesso!");
 };
 
 var b1 = 0;
@@ -102,6 +104,7 @@ var content = null;
 function getThePicture() {
   if (b1 == 0) {
     alert("Nenhuma imagem foi selecionada.")
+    stopFUNCTIONHUAAAAAA();
   }
 
   return document.getElementById("image");
