@@ -41,13 +41,13 @@
 					</tr>
 				</table>
 				<p onload="getwebdata()">Texto do cardápio</p>
-				<textarea id="textarea"></textarea>
+				<textarea id="textarea" cols=30 style="resize:vertical"></textarea>
 				<br/><br/><br/>
 				<button onclick="generate()">Gerar Imagem</button>
 				<a id="download"><button onclick="download()">Download</button></a>
 		</div>
 		<div id="output" class="center" style="margin-top:50%">
-			<canvas hidden id="canvas" width="1080px" height="1920px">Your browser does not support canvas, sorry :(</canvas>
+			<canvas id="canvas" width="1080px" height="1920px">Your browser does not support canvas, sorry :(</canvas>
 		</div>
 	</body>
 </html>
