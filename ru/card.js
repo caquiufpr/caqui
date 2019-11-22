@@ -154,13 +154,14 @@ function button(number) {
 
 function getTheDate() {
   var d = new Date();
+  var month = parseInt(d.getMonth())+1;
 
   if (b2 == 4) {
-    return d.getDate()+"/"+ d.getMonth()+1;
+    return d.getDate()+"/"+ month;
   } else if (b2 == 5) {
-    return d.getDate()+1+"/"+ d.getMonth()+1;
+    return d.getDate()+1+"/"+ month;
   } else if (b2 == 6) {
-    return prompt("Qual a data a ser colocada na imagem?",d.getDate()+"/"+ d.getMonth()+1);
+    return prompt("Qual a data a ser colocada na imagem?",d.getDate()+"/"+ month);
   }
 }
 
