@@ -205,6 +205,6 @@ function download() {
   var download = document.getElementById("download");
   var image = document.getElementById("canvas").toDataURL("image/png")
               .replace("image/png", "image/octet-stream");
-  download.setAttribute("download", "Cardapio do dia "+getTheDate());
+  download.setAttribute("download", "Cardapio do dia "+getTheDate()+".png");
   download.setAttribute("href", image);
 }
