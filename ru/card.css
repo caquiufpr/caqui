@@ -32,11 +32,10 @@ th.selected1, th.selected2 {
 
 .chapT {
 	color: var(--s-color);
-	font-size: 34px;
+	font-size: 34vw;
 	font-weight: 400px;
-	line-height: 40px;
+	line-height: 40vw;
 	box-sizing: border-box;
-	-webkit-margin-before: 0.83em;
 	margin-bottom: 50px;
 }
 
@@ -61,18 +60,14 @@ header {
 	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
 	filter: opacity(0.82);
 	color: var(--text-on-p);
-	float: center;
 	font-size: 18px;
-	vertical-align: center;
-	line-height: 64px;
 	font-weight: 400;
 	-webkit-font-smoothing: antialiased;
 	font-family: "RobotoDraft","Roboto",sans-serif;
 	text-rendering: optimizeLegibility;
 	position: fixed;
 	display: block;
-	text-align: left;
-	z-index: 3;
+	text-align: center;
 }
 
 body {
