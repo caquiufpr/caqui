@@ -1,19 +1,3 @@
-/**function getwebdata() {
-
-
-}
-
-let scrape = async () => {
-  const browser = await puppeteer.launch({headless: false});
-  const page = await browser.newPage();
-  await page.goto('http://www.pra.ufpr.br/portal/ru/ru-centro-politecnico/');
-  await page.waitFor(1000);
-  // Scrape
-  browser.close();
-  return result;
-};**/
-
-
 function generate() {
 
   //Get variables;
@@ -42,64 +26,52 @@ function generate() {
   ctx.font = "42px Arial";
   ctx.fillStyle = "#212121";
   ctx.textAlign = "left";
-
-  var breakfast = finaltext[0].split("\n");
-  for (var i = 0; i < breakfast.length; i++) {
-    wrapText(ctx, breakfast[i], 110, 650+i*50, 900, 45);
-  }
-
-  var lunch = finaltext[1].split("\n");
-  for (var i = 0; i < lunch.length; i++) {
-    wrapText(ctx, lunch[i], 110, 925+i*50, 900, 45);
-  }
-
-  var dinner = finaltext[2].split("\n");
-  for (var i = 0; i < dinner.length; i++) {
-    wrapText(ctx, dinner[i], 110, 1380+i*50, 900, 45);
-  }
+  ctx.textBaseline = "top";
+  ctx.wrapText(finaltext[0],110,620,900,45);
+  ctx.wrapText(finaltext[1],110,895,900,45);
+  ctx.wrapText(finaltext[2],110,1350,900,45);
+  ctx.wrapText(finaltext[3],110,1486,570,45);
 
   alert("Imagem gerada com sucesso!");
 };
 
-// Code copied on https://codepen.io/peterhry/pen/AGIEa
-
-function wrapText (context, text, x, y, maxWidth, lineHeight) {
-
-    var words = text.split(' '),
-        line = '',
-        i,
-        test,
-        metrics;
-
-    for (i = 0; i < words.length; i++) {
-        test = words[i];
-        metrics = context.measureText(test);
-        while (metrics.width > maxWidth) {
-            // Determine how much of the word will fit
-            test = test.substring(0, test.length - 1);
-            metrics = context.measureText(test);
-        }
-        if (words[i] != test) {
-            words.splice(i + 1, 0,  words[i].substr(test.length))
-            words[i] = test;
-        }
-
-        test = line + words[i] + ' ';
-        metrics = context.measureText(test);
-
-        if (metrics.width > maxWidth && i > 0) {
-            context.fillText(line, x, y);
-            line = words[i] + ' ';
-            y = y + lineHeight;
-            lineCount++;
-        }
-        else {
-            line = test;
-        }
-    }
-
-    context.fillText(line, x, y);
+function warning() {
+  var dialog = confirm("Para utilizar o gerador selecione a imagem base, a data do cardápio e insira o texto copiado diretamente do cardápio oficial do site da Prae. Aperte OK para obter um exemplo do texto a ser copiado.\n\nVersão do site: 1.0.1\nCriado por Vicente Parmigiani");
+  if (dialog == true) {
+    alert("CAFÉ DA MANHÃ\nCafé/leite/chá\nPão com queijo\nFruta\n\nALMOÇO\nSalada de Alface e Cenoura Ralada\nPicadinho Especial\nAbobrinha Refogada\nFruta\nOpção vegana: Grão de bico Especial\n\nJANTAR\nRúcula e rabanete\nFricassê de frango\nCampestre (bacon, batata, vagem, tomate, abobrinha e macarrão)\nOpção vegana: ervilha seca ao molho mostarda");
+  }
 }
+
+//////////////////////////////////////////////////
+// Code from http://jsfiddle.net/7RdbL/
+//////////////////////////////////////////////////
+
+CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, lineHeight) {
+
+    var lines = text.split("\n");
+
+    for (var i = 0; i < lines.length; i++) {
+
+        var words = lines[i].split(' ');
+        var line = '';
+
+        for (var n = 0; n < words.length; n++) {
+            var testLine = line + words[n] + ' ';
+            var metrics = this.measureText(testLine);
+            var testWidth = metrics.width;
+            if (testWidth > maxWidth && n > 0) {
+                this.fillText(line, x, y);
+                line = words[n] + ' ';
+                y += lineHeight;
+            } else {
+                line = testLine;
+            }
+        }
+
+        this.fillText(line, x, y);
+        y += lineHeight;
+    }
+};
 
 //////////////////////////////////////////////////
 
@@ -145,7 +117,7 @@ function button(number) {
 
     input.click();
   } else if (number == 2) {
-    document.querySelector('#image').src = "template.png";
+    document.querySelector('#image').src = "template.jpg";
   } else if (number == 3) {
     var src = prompt("Insira o link da imagem abaixo.", "")
     document.querySelector('#image').src = src;
@@ -198,6 +170,14 @@ function getTheText() {
   }
 
   text = text.split("<~hue~>")
+
+  // Wrap imagem
+  var pretext = text[2].split("\n");
+  pretext[2] += "/split";
+  pretext = pretext.join("\n");
+  pretext = pretext.split("/split");
+  text[2] = pretext[0];
+  text[3] = pretext[1];
 
   return text;
 }
