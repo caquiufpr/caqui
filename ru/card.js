@@ -182,7 +182,7 @@ try {
 
   return text;
 } catch (e) {
-  alert("Você deve inserir um texto válido retirado do cardápio da PRAE, aperte 'Aviso' para mais informações.");
+  alert("Você deve inserir um texto válido retirado do cardápio da PRA, aperte 'Aviso' para mais informações.");
 }
 }
 
