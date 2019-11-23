@@ -15,16 +15,16 @@
 					<i class="material-icons" md-24 md-light style="vertical-align: middle;padding-right: 10px;">local_dining</i>
 					<text style="margin-top: 1px;vertical-align: middle;">Cardápio RU Politécnico</text>
 				</div>
-				<!--text style="vertical-align: middle; position:fixed; right:20px; top: 2px; cursor: pointer">
-					<a href='' class="normalA">
-						<i class="material-icons" md-24 md-light style="padding: 17px; vertical-align: sub">home</i>
+				<text style="vertical-align: middle; position:fixed; right:20px; top: 2px; cursor: pointer">
+					<a onclick="warning()" class="normalA">
+						<i class="material-icons" md-24 md-light style="padding: 17px; vertical-align: sub">help</i>
 					</a>
-				</text-->
+				</text>
 			</p>
 		</header>
 		<div id="body" class="center">
 				<!--p class="chapT">Gerar Cardápio para o Instagram</p-->
-				<p>Imagem Selecionada</p>
+				<p>Imagem de Fundo</p>
 				<table>
 					<tr>
 						<th id="b1" onclick="button(1)">Upload</th>
@@ -42,11 +42,10 @@
 					</tr>
 				</table>
 				<p onload="getwebdata()">Texto do cardápio</p>
-				<textarea id="textarea" cols=30 style="resize:vertical"></textarea>
-				<br/><br/><br/>
+				<textarea id="textarea" cols=30 rows=10 style="resize:vertical"></textarea>
+				<p class="obs">Clique <a target="_blank" href="http://www.pra.ufpr.br/portal/ru/ru-centro-politecnico/">aqui</a> para ir até o site.</p><br/>
 				<button onclick="generate()">Gerar Imagem</button>
 				<a id="download"><button onclick="download()">Download</button></a>
-				<button onclick="warning()">Aviso</button>
 		</div>
 		<div hidden id="output" class="center" style="margin-top:100%">
 			<canvas id="canvas" width="1080px" height="1920px">Your browser does not support canvas, sorry :(</canvas>

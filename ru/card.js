@@ -36,7 +36,7 @@ function generate() {
 };
 
 function warning() {
-  var dialog = confirm("Para utilizar o gerador selecione a imagem base, a data do cardápio e insira o texto copiado diretamente do cardápio oficial do site da PRAE. Aperte OK para obter um exemplo do texto a ser copiado.\n\nVersão do site: 1.0.1\nCriado por Vicente Parmigiani");
+  var dialog = confirm("Para utilizar o gerador selecione a imagem base, a data do cardápio e insira o texto copiado diretamente do cardápio oficial do site da PRA. Aperte OK para obter um exemplo do texto a ser copiado.\n\nVersão do site: 1.0.1\nCriado por Vicente Parmigiani");
   if (dialog == true) {
     alert("CAFÉ DA MANHÃ\nCafé/leite/chá\nPão com queijo\nFruta\n\nALMOÇO\nSalada de Alface e Cenoura Ralada\nPicadinho Especial\nAbobrinha Refogada\nFruta\nOpção vegana: Grão de bico Especial\n\nJANTAR\nRúcula e rabanete\nFricassê de frango\nCampestre (bacon, batata, vagem, tomate, abobrinha e macarrão)\nOpção vegana: ervilha seca ao molho mostarda");
   }
