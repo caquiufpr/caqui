@@ -1,3 +1,5 @@
+var version = "1.1.0" // Versão do site
+
 function generate() {
 
   //Get variables;
@@ -27,26 +29,36 @@ function generate() {
   ctx.fillStyle = "#212121";
   ctx.textAlign = "left";
   ctx.textBaseline = "top";
-  ctx.wrapText(finaltext[0],110,620,900,45);
-  ctx.wrapText(finaltext[1],110,895,900,45);
-  ctx.wrapText(finaltext[2],110,1350,900,45);
-  ctx.wrapText(finaltext[3],110,1486,570,45);
 
-  alert("Imagem gerada com sucesso!");
+  ctx.wrapText(finaltext[0],110,620,900,45, false); // Café da manhã
+  ctx.wrapText(finaltext[1],110,895,900,45, false); // Almoço
+
+  hasBroken = 2;  // Reset line breaks;
+  ctx.wrapText(finaltext[2],110,1350,900,45, false); // Jantar (parte 1)
+  ctx.wrapText(finaltext[3],110,1350,570,45, true); // Janter (parte 2)
+
+  //alert("Imagem gerada com sucesso!");
+  popUpResult();
 };
 
 function warning() {
-  var dialog = confirm("Para utilizar o gerador selecione a imagem base, a data do cardápio e insira o texto copiado diretamente do cardápio oficial do site da PRA. Aperte OK para obter um exemplo do texto a ser copiado.\n\nVersão do site: 1.0.1\nCriado por Vicente Parmigiani");
+  var dialog = confirm("Para utilizar o gerador selecione a imagem base, a data do cardápio e insira o texto copiado diretamente do cardápio oficial do site da PRA. Aperte OK para obter um exemplo do texto a ser copiado.\n\nVersão do site: "+version+"\nCriado por Vicente Parmigiani");
   if (dialog == true) {
     alert("CAFÉ DA MANHÃ\nCafé/leite/chá\nPão com queijo\nFruta\n\nALMOÇO\nSalada de Alface e Cenoura Ralada\nPicadinho Especial\nAbobrinha Refogada\nFruta\nOpção vegana: Grão de bico Especial\n\nJANTAR\nRúcula e rabanete\nFricassê de frango\nCampestre (bacon, batata, vagem, tomate, abobrinha e macarrão)\nOpção vegana: ervilha seca ao molho mostarda");
   }
 }
 
 //////////////////////////////////////////////////
-// Code from http://jsfiddle.net/7RdbL/
+// Code from http://jsfiddle.net/7RdbL/ (adepted)
 //////////////////////////////////////////////////
 
-CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, lineHeight) {
+var hasBroken = 2;
+
+CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, lineHeight, testBroke) {
+
+    if (testBroke == true) {
+        y += lineHeight * hasBroken;
+    }
 
     var lines = text.split("\n");
 
@@ -63,6 +75,7 @@ CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, li
                 this.fillText(line, x, y);
                 line = words[n] + ' ';
                 y += lineHeight;
+                hasBroken++;
             } else {
                 line = testLine;
             }
@@ -192,4 +205,23 @@ function download() {
               .replace("image/png", "image/octet-stream");
   download.setAttribute("download", "Cardapio do dia "+getTheDate()+".png");
   download.setAttribute("href", image);
+}
+
+function popUpResult() {
+  var modal = document.getElementById("myModal");
+
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  var modalImg = document.getElementById("canvas");
+  var captionText = document.getElementById("caption");
+
+  modal.style.display = "block";
+  captionText.innerHTML = "Cardápio do dia "+getTheDate();
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
 }
