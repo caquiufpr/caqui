@@ -1,12 +1,13 @@
 var version = "1.1.0" // Versão do site
 
-function generate() {
+var date = getTheDate();
 
+function generate() {
   //Get variables;
   var textToWrite = document.getElementById("textarea").value;
-  var date = getTheDate();
   var picture = getThePicture();
   var finaltext = getTheText();
+  date = getTheDate();
 
   // Draw on Canvas
   var c = document.getElementById("canvas");
@@ -23,7 +24,12 @@ function generate() {
   ctx.font = "bold 125px Arial";
   ctx.fillStyle = "#ff9000";
   ctx.textAlign = "right";
-  ctx.fillText(date, 978, 445);
+  ctx.textBaseline = "bottom";
+  ctx.fillText(date[0], 978, 453);
+
+  ctx.font = "bold 42px Arial";
+  ctx.textBaseline = "top";
+  ctx.fillText(date[1], 965, 445);
 
   ctx.font = "42px Arial";
   ctx.fillStyle = "#212121";
@@ -138,15 +144,52 @@ function button(number) {
 }
 
 function getTheDate() {
+  debugger;
   var d = new Date();
+  var array = [];
+
   var month = parseInt(d.getMonth())+1;
 
   if (b2 == 4) {
-    return d.getDate()+"/"+ month;
+    array[0] = d.getDate()+"/"+ month;
+    array[1] = getWeekDay(d.getDay());
   } else if (b2 == 5) {
-    return d.getDate()+1+"/"+ month;
+    array[0] = d.getDate()+1+"/"+ month;
+    array[1] = getWeekDay(d.getDay()+1);
   } else if (b2 == 6) {
-    return prompt("Qual a data a ser colocada na imagem?",d.getDate()+"/"+ month);
+    array[0] = prompt("Qual a data a ser colocada na imagem?",d.getDate()+"/"+ month);
+    array[1] = prompt("Qual o dia da semada?",getWeekDay(d.getDay()));
+  }
+
+  return array;
+}
+
+function getWeekDay(day) {
+  switch (day) {
+    case 0:
+      return "DOMINGO";
+      break;
+    case 1:
+      return "SEGUNDA-FEIRA";
+      break;
+    case 2:
+      return "TERÇA-FEIRA";
+      break;
+    case 3:
+      return "QUARTA-FEIRA";
+      break;
+    case 4:
+      return "QUINTA-FEIRA";
+      break;
+    case 5:
+      return "SEXTA-FEIRA";
+      break;
+    case 6:
+      return "SÁBADO";
+      break;
+    default:
+      return null;
+      break;
   }
 }
 
@@ -203,7 +246,7 @@ function download() {
   var download = document.getElementById("download");
   var image = document.getElementById("canvas").toDataURL("image/png")
               .replace("image/png", "image/octet-stream");
-  download.setAttribute("download", "Cardapio do dia "+getTheDate()+".png");
+  download.setAttribute("download", "Cardapio do dia "+date[0]+".png");
   download.setAttribute("href", image);
 }
 
@@ -215,7 +258,7 @@ function popUpResult() {
   var captionText = document.getElementById("caption");
 
   modal.style.display = "block";
-  captionText.innerHTML = "Cardápio do dia "+getTheDate();
+  captionText.innerHTML = "Cardápio do dia "+date[0];
 
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
