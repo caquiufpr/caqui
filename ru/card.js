@@ -166,9 +166,6 @@ function getTheDate() {
 
 function getWeekDay(day) {
   switch (day) {
-    case 0:
-      return "DOMINGO";
-      break;
     case 1:
       return "SEGUNDA-FEIRA";
       break;
@@ -188,7 +185,7 @@ function getWeekDay(day) {
       return "SÁBADO";
       break;
     default:
-      return null;
+      return "DOMINGO";
       break;
   }
 }
