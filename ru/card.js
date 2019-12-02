@@ -1,4 +1,4 @@
-var version = "1.1.2" // Versão do site
+var version = "1.1.3" // Versão do site
 
 var date = getTheDate();
 
@@ -149,15 +149,20 @@ function getTheDate() {
   var array = [];
 
   var month = parseInt(d.getMonth())+1;
+  var dayZero = "";
+
+  if (d.getDate() < 10) {
+    dayZero = "0";
+  }
 
   if (b2 == 4) {
-    array[0] = d.getDate()+"/"+ month;
+    array[0] = dayZero+d.getDate()+"/"+ month;
     array[1] = getWeekDay(d.getDay());
   } else if (b2 == 5) {
-    array[0] = d.getDate()+1+"/"+ month;
+    array[0] = dayZero+(d.getDate()+1)+"/"+ month;
     array[1] = getWeekDay(d.getDay()+1);
   } else if (b2 == 6) {
-    array[0] = prompt("Qual a data a ser colocada na imagem?",d.getDate()+"/"+ month);
+    array[0] = prompt("Qual a data a ser colocada na imagem?",dayZero+d.getDate()+"/"+ month);
     array[1] = prompt("Qual o dia da semada?",getWeekDay(d.getDay()));
   }
 
