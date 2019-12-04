@@ -1,4 +1,4 @@
-var version = "1.2.1" // Versão do site
+var version = "1.2.2" // Versão do site
 
 var date = getTheDate();
 
