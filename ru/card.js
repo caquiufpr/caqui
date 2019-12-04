@@ -1,4 +1,4 @@
-var version = "1.1.3" // Versão do site
+var version = "1.2.0" // Versão do site
 
 var date = getTheDate();
 
@@ -94,8 +94,8 @@ CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, li
 
 //////////////////////////////////////////////////
 
-var b1 = 0;
-var b2 = 0;
+var b1 = 2;
+var b2 = 4;
 
 function button(number) {
   if (number<4) {
@@ -144,10 +144,10 @@ function button(number) {
 }
 
 function getTheDate() {
-  debugger;
   var d = new Date();
   var array = [];
 
+  // TODO: Fix months that are less than 10
   var month = parseInt(d.getMonth())+1;
   var dayZero = "";
 
