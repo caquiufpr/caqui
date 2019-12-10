@@ -1,4 +1,4 @@
-var version = "1.2.2" // Versão do site
+var version = "1.2.3" // Versão do site
 
 var date = getTheDate();
 
@@ -144,27 +144,35 @@ function button(number) {
 }
 
 function getTheDate() {
-  var d = new Date();
   var array = [];
 
-  // TODO: Fix months that are less than 10
-  var month = parseInt(d.getMonth())+1;
-  var dayZero = "";
+  var today = new Date();
+  var tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
 
-  if (d.getDate() < 10) {
-    dayZero = "0";
+  var day = 0;
+  var month = 0;
+  var weekDay = "";
+
+  switch (b2) {
+    case 4:
+      day = today.getDate();
+      month = today.getMonth()+1;
+      weekDay = getWeekDay(today.getDay());
+      break;
+    case 5:
+      day = tomorrow.getDate();
+      month = tomorrow.getMonth()+1;
+      weekDay = getWeekDay(tomorrow.getDay());
+      break;
+    case 6:
+      day = prompt("Qual o dia a ser colocado na imagem?",today.getDate());
+      month = prompt("Qual o mês?",today.getMonth());
+      weekDay = prompt("Qual o dia da semana?",getWeekDay(today.getDay()));
+      break;
   }
 
-  if (b2 == 4) {
-    array[0] = dayZero+d.getDate()+"/"+ month;
-    array[1] = getWeekDay(d.getDay());
-  } else if (b2 == 5) {
-    array[0] = dayZero+(d.getDate()+1)+"/"+ month;
-    array[1] = getWeekDay(d.getDay()+1);
-  } else if (b2 == 6) {
-    array[0] = prompt("Qual a data a ser colocada na imagem?",dayZero+d.getDate()+"/"+ month);
-    array[1] = prompt("Qual o dia da semada?",getWeekDay(d.getDay()));
-  }
+  array[0] = ("0" + day).slice(-2) + "/" + ("0" + month).slice(-2);
+  array[1] = weekDay;
 
   return array;
 }
