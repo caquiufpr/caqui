@@ -1,4 +1,4 @@
-var version = "1.2.3" // Versão do site
+var version = "1.3.0" // Versão do site
 
 var date = getTheDate();
 
@@ -21,27 +21,23 @@ function generate() {
   ctx.drawImage(picture, 0, 0);
 
   // date
-  ctx.font = "bold 125px Arial";
-  ctx.fillStyle = "#ff9000";
-  ctx.textAlign = "right";
-  ctx.textBaseline = "bottom";
-  ctx.fillText(date[0], 978, 453);
-
   ctx.font = "bold 42px Arial";
+  ctx.fillStyle = "#fff";
+  ctx.textAlign = "center";
   ctx.textBaseline = "top";
-  ctx.fillText(date[1], 965, 445);
+  ctx.fillText(date[0]+" • "+date[1], 540, 365);
 
   ctx.font = "42px Arial";
   ctx.fillStyle = "#212121";
   ctx.textAlign = "left";
   ctx.textBaseline = "top";
 
-  ctx.wrapText(finaltext[0],110,620,900,45, false); // Café da manhã
-  ctx.wrapText(finaltext[1],110,895,900,45, false); // Almoço
+  ctx.wrapText(finaltext[0],110,630,900,45, false); // Café da manhã
+  ctx.wrapText(finaltext[1],110,905,900,45, false); // Almoço
 
   hasBroken = 2;  // Reset line breaks;
-  ctx.wrapText(finaltext[2],110,1350,900,45, false); // Jantar (parte 1)
-  ctx.wrapText(finaltext[3],110,1350,570,45, true); // Janter (parte 2)
+  ctx.wrapText(finaltext[2],110,1360,900,45, false); // Jantar (parte 1)
+  ctx.wrapText(finaltext[3],110,1360,570,45, true); // Janter (parte 2)
 
   //alert("Imagem gerada com sucesso!");
   popUpResult();
