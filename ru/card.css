@@ -13,8 +13,7 @@
 }
 
 th, .obs {
-  background-color: var(--s-ultralight);
-  color: #9e9e9e;
+  color: var(--s-color);
   width: 80px;
   height: 35px;
   border-radius: 150px;
@@ -25,6 +24,9 @@ th, .obs {
   font-size: 80%;
   padding: 0px;
   cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--s-color);
 }
 
 th:active {
@@ -52,16 +54,16 @@ a {
 	-webkit-font-smoothing: antialiased;
 	font-size: 150%;
 	text-rendering: optimizeLegibility;
-	margin-top: 4%;
 	background-color: var(--body-color);
-	padding-bottom: 50px;
-  margin-left: 8%;
+  display: flex;
+  flex-direction: row;
+  padding: 5vw;
 }
 
 #header {
 	z-index: 8;
 	width: 100%;
-	height: 33%;
+	height: 20%;
 	background-color: var(--p-color);
 	box-shadow: 0 2px 5px rgba(0,0,0,0.26);
 	color: var(--text-on-p);
@@ -92,7 +94,7 @@ a {
 }
 
 #logo {
-  width: 150;
+  width: 70px;
   margin-left: 5%;
 }
 
@@ -139,7 +141,7 @@ body {
 
 .finishTitle {
   font-weight: bold;
-  font-size: 170%;
+  font-size: 110%;
   font-family:'Open Sans', sans-serif;
   color: white;
 }
@@ -152,10 +154,42 @@ body {
 
 .pageEnd {
   margin-top: 0px;
-  padding-left: 8%;
   padding: 30px;
   background-color: var(--p-color);
-  padding-bottom: 250px;
+  margin: 2%;
+  padding-bottom: 28vh;
+  border-radius: 16px;
+}
+
+.pageEnd>div {
+  width: max-content;
+}
+
+.mobileLayout {
+  width: -webkit-fill-available;
+}
+
+/* Create mobile layout */
+@media only screen and (max-width: 800px) {
+  .mobileLayout {
+    width: 90vw;
+  }
+
+  #body {
+    flex-direction: column;
+  }
+
+  #image {
+    max-width: 100%;
+  }
+
+  .pageEnd {
+    margin-top: 5vw;
+  }
+
+  #header {
+    height: 14%;
+  }
 }
 
 /* Material Button */

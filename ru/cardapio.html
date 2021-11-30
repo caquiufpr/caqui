@@ -1,73 +1,84 @@
 <!-- P�gina criada por Vicente Parmigiani em 06/11/2019 �s 20:39h-->
 <html lang="pt">
-	<head>
-		<title>Cardápio RU</title>
-		<link rel="icon" type="image/png" href="CAQUI.png" />
-		<link rel="stylesheet" type="text/css" href="card.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Open+Sans&display=swap" rel="stylesheet">
-		<script src="card.js"></script>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	</head>
-	<body>
-		<div id="header">
-			<div id="titleCenter">
-				<table id="titleTable">
-					<tr>
-						<td>
-							<img src="CAQUI.png" id="logo">
-						</td>
-						<td style="padding-left: 20px; padding-right:10px;">
-							<text id="title1">CARDÁPIO RU</text><br/>
-							<text id="title2">POLITÉCNICO</text>
-						</td>
-					</tr>
-				</table>
-			</div>
+
+<head>
+	<title>Cardápio RU</title>
+	<link rel="icon" type="image/png" href="CAQUI.png" />
+	<link rel="stylesheet" type="text/css" href="card.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bebas+Neue|Open+Sans&display=swap" rel="stylesheet">
+	<script src="card.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div id="header">
+		<div id="titleCenter">
+			<table id="titleTable">
+				<tr>
+					<td>
+						<img src="CAQUI.png" id="logo">
+					</td>
+					<td style="padding-left: 20px; padding-right:10px;">
+						<text id="title1">CARDÁPIO RU</text><br />
+						<text id="title2">POLITÉCNICO</text>
+					</td>
+				</tr>
+			</table>
 		</div>
-		<!-- Code from https://www.w3schools.com/howto/howto_css_modal_images.asp (modified) -->
-		<div id="myModal" class="modal">
-		  <span class="close">&times;</span>
-			<canvas class="modal-content" id="canvas" width="1080px" height="1920px">Your browser does not support canvas, sorry :(</canvas>
-		  <div id="caption"></div>
+	</div>
+	<!-- Code from https://www.w3schools.com/howto/howto_css_modal_images.asp (modified) -->
+	<div id="myModal" class="modal">
+		<span class="close">&times;</span>
+		<canvas class="modal-content" id="canvas" width="1080px" height="1920px">Your browser does not support canvas,
+			sorry :(</canvas>
+		<div id="caption"></div>
+	</div>
+	<!-- End of the code -->
+	<div id="body">
+		<!--p class="chapT">Gerar Cardápio para o Instagram</p-->
+		<div class="mobileLayout">
+			<p class="title">Imagem de fundo</p>
+			<table>
+				<tr>
+					<th id="b2" onclick="button(2)" class="selected1">Padrão</th>
+					<th id="b1" onclick="button(1)">Upload</th>
+					<th id="b3" onclick="button(3)">Link</th>
+				</tr>
+			</table>
+			<br />
+			<img id="image" src="template.jpg"></img>
 		</div>
-		<!-- End of the code -->
-		<div id="body">
-				<!--p class="chapT">Gerar Cardápio para o Instagram</p-->
-				<p class="title">Imagem de fundo</p>
-				<table>
-					<tr>
-						<th id="b2" onclick="button(2)" class="selected1">Padrão</th>
-						<th id="b1" onclick="button(1)">Upload</th>
-						<th id="b3" onclick="button(3)">Link</th>
-					</tr>
-				</table>
-				<br/>
-				<img id="image" src="template.jpg"></img>
-				<p class="title">Data</p>
-				<table>
-					<tr>
-						<th id="b4" onclick="button(4)" class="selected2">Hoje</th>
-						<th id="b5" onclick="button(5)">Amanhã</th>
-						<th id="b6" onclick="button(6)">Outra</th>
-					</tr>
-				</table>
-				<p onload="getwebdata()" class="title">Texto do cardápio</p>
-				<table style="margin-bottom:10px;">
-					<th class="obs"><a target="_blank" href="http://www.pra.ufpr.br/portal/ru/ru-centro-politecnico/"><i class="material-icons" md-18 md-light style="vertical-align: middle;padding-right: 10px;">open_in_new</i>Ir ao website</a></th>
-				</table>
-				<textarea id="textarea" cols=30 rows=10 style="resize:vertical"></textarea><br/>
+		<div class="mobileLayout">
+			<p class="title">Data</p>
+			<table>
+				<tr>
+					<th id="b4" onclick="button(4)" class="selected2">Hoje</th>
+					<th id="b5" onclick="button(5)">Amanhã</th>
+					<th id="b6" onclick="button(6)">Outra</th>
+				</tr>
+			</table>
+			<p onload="getwebdata()" class="title">Texto do cardápio</p>
+			<table style="margin-bottom:10px;">
+				<th class="obs"><a target="_blank" href="http://www.pra.ufpr.br/portal/ru/ru-centro-politecnico/"><i
+							class="material-icons" md-18 md-light
+							style="vertical-align: middle;padding-right: 10px;">open_in_new</i>Ir ao website</a></th>
+			</table>
+			<textarea id="textarea" cols=30 rows=10 style="resize:vertical"></textarea><br />
 		</div>
-		<div class="pageEnd">
-			<div>
+		<div class="mobileLayout">
+			<div class="pageEnd">
 				<p class="finishTitle">Escolha uma das opções para concluir</p>
 				<button onclick="generate()">Gerar Imagem</button>
 				<a id="download"><button onclick="download()">Salvar</button></a>
 				<button onclick="warning()">Ajuda</button>
 			</div>
+			<div hidden id="output" class="center" style="margin-top:100%">
+				<canvas id="canvas" width="1080px" height="1920px">Your browser does not support canvas, sorry
+					:(</canvas>
+			</div>
 		</div>
-		<div hidden id="output" class="center" style="margin-top:100%">
-			<canvas id="canvas" width="1080px" height="1920px">Your browser does not support canvas, sorry :(</canvas>
-		</div>
-	</body>
+	</div>
+</body>
+
 </html>
