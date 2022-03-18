@@ -1,4 +1,4 @@
-var version = "1.4.0"; // Versão do site
+var version = "1.4.1"; // Versão do site
 
 var date = getTheDate();
 
@@ -229,14 +229,18 @@ function getTheText() {
     for (var i = 0; i < text.length; i++) {
       if (text[i] == "CAF\u00C9 DA MANH\u00C3") {
         text.splice(i, 1);
+        text[i-1] = text[i-1] + "\n";
       } else if (text[i] == "ALMO\u00C7O") {
         text.splice(i, 1);
+        text[i-1] = text[i-1] + "\n";
       } else if (text[i] == "JANTAR") {
         text.splice(i, 1);
+        text[i-1] = text[i-1] + "\n";
       }
     }
 
     text = text.join("\n");
+    text = text.replace(/  /gi, " ");
 
     for (var i = 0; i < 5; i++) {
       text = text.replace("\n\n", "<~hue~>");
